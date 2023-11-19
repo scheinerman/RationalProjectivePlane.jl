@@ -33,7 +33,7 @@ struct PPoint <: ProjectiveObject
 end
 PPoint(x::Vector) = PPoint(x...)
 PPoint(x::HVector) = PPoint(Vector(x))
-PPoint(x,y) = PPoint(x,y,1)
+PPoint(x, y) = PPoint(x, y, 1)
 
 """
 A `PLine` is a line in the rational projective plane. Construct as follows:
@@ -50,6 +50,7 @@ struct PLine <: ProjectiveObject
 end
 PLine(x::Vector) = PLine(x...)
 PLine(x::HVector) = PLine(Vector(x))
+PLine(x, y) = PLine(x, y, 1)
 
 
 ## Conversion/copy methods
