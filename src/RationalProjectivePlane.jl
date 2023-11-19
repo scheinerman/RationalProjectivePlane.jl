@@ -61,6 +61,7 @@ PLine(x::T) where {T<:ProjectiveObject} = PLine(x.data)
 
 include("io.jl")
 include("bools.jl")
+include("meet_join.jl")
 
 
 
