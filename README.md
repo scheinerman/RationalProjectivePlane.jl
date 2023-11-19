@@ -158,3 +158,11 @@ julia> b = PPoint(1,2,0)
 julia> isinf(b)
 true
 ```
+
+## To Do List
+
+* For a finite point `a`, create a method that returns `(x,y)` such that `(x,y,1)` are the homogenous coordinates of `a`. In this way, `a=PPoint(x,y)`. This `(x,y)` represents the point in the Euclidean plane corresponding to `a` (since it's not at infinity). [This will be easy.]
+* Transformation methods.
+* Should `Vector` be changed to give the integer version that we use to print?
+* Should I export `ProjectiveObject`?
+* Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
