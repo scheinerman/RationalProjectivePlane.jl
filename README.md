@@ -59,7 +59,7 @@ julia> PLine(a)
 
 ### Conversion to a `Vector`
 
-Give a point or line, `x`, use `Vector(x)` to convert `x` into a vector of rational 
+Given a point or line, `x`, use `Vector(x)` to convert `x` into a vector of rational 
 numbers. The vector version is scaled such that the last nonzero coordinate is `1`.
 ```
 julia> a = PPoint(-3, 3//2, 5)
