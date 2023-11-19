@@ -2,6 +2,8 @@
 
 Points and lines in the rational projective plane. Both are represented using homogenous coordinates. 
 
+> Homogenous coordinates are triples of rational numbers that are not all zero. The triple `(a ,b, c)` is the same as the triple `(ma, mb, mc)` where `m` is any nonzero rational. 
+
 ## Creating points and lines
 
 A point in the projective plane is created by one of the following methods:
@@ -57,7 +59,19 @@ julia> PLine(a)
 
 ### Conversion to a `Vector`
 
-TBW
+Give a point or line, `x`, use `Vector(x)` to convert `x` into a vector of rational 
+numbers. The vector version is scaled such that the last nonzero coordinate is `1`.
+```
+julia> a = PPoint(-3, 3//2, 5)
+(-6 : 3 : 10)
+
+julia> Vector(a)
+3-element Vector{Rational{Int64}}:
+ -3//5
+  3//10
+  1//1
+  ```
+
 
 ## Incidence
 
@@ -69,7 +83,19 @@ Any of the following may be used to see if a point `a` is on a line `L`:
 
 > The symbol `∈` can is typed `\in<tab>` and the symbol `∋` is typed `\ni<tab>`.
 
+```
+julia> a = PPoint(2,1,1)
+(2 : 1 : 1)
+
+julia> L = PLine(-1,1,1)
+[-1 : 1 : 1]
+
+julia> a ∈ L
+true
+```
+
 ## Operations
+
 
 Given distinct points `a` and `b`, use `a ∨ b` to give the unique line that contains
 both points.
@@ -77,15 +103,58 @@ both points.
 Given distinct lines `L` and `M`, use `L ∧ M` to give the unique point that lines 
 on both lines. 
 
+> The symbol `∨` is typed `\vee<tab>` and the symbol `∧` is typed `\wedge<tab>`.
+
+
+```
+julia> a = PPoint(2,3,5)
+(2 : 3 : 5)
+
+julia> b = PPoint(-1,-4,2)
+(-1 : -4 : 2)
+
+julia> L = a ∨ b
+[-26 : 9 : 5]
+
+julia> a ∈ L
+true
+
+julia> b ∈ L
+true
+```
+
+
 Given a single point `a`, `two_lines(a)` returns a pair of distinct lines that both
 contain the point `a`
 
 Given a singe line `L`, `two_points(L)` returns a pair of distince points that are
 both on the line `L`.
 
-> The symbol `∨` is typed `\vee<tab>` and the symbol `∧` is typed `\wedge<tab>`.
+```
+julia> L = PLine(2, 3//5, -1)
+[-10 : -3 : 5]
+
+julia> a,b = two_points(L)
+((-3 : 10 : 0), (1 : 0 : 2))
+
+julia> a ∨ b
+[-10 : -3 : 5]
+```
 
 ## Infinity
 
 The function `isinf` is used to tell if a point lies on the line at infinity as well
 as checking if a line is the line at infinity. 
+```
+julia> a = PPoint(1,2,3)
+(1 : 2 : 3)
+
+julia> isinf(a)
+false
+
+julia> b = PPoint(1,2,0)
+(1 : 2 : 0)
+
+julia> isinf(b)
+true
+```

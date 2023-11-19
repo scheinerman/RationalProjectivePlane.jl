@@ -58,6 +58,9 @@ PLine(x, y) = PLine(x, y, 1)
 PPoint(x::T) where {T<:ProjectiveObject} = PPoint(x.data)
 PLine(x::T) where {T<:ProjectiveObject} = PLine(x.data)
 
+# Convert to a `Vector{Rational}`
+
+Vector(x::T) where {T<:ProjectiveObject} = x.data.data
 
 
 include("io.jl")
