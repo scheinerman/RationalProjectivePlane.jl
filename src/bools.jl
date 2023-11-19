@@ -13,7 +13,7 @@ import Base: (==), in, isinf
 
 Test if `a` is on the line `L`.
 """
-in(a::PPoint, L::PLine) = dot(a.data, L.data) == 0
+in(a::PPoint, L::PLine) = dot(a.data.data, L.data.data) == 0
 
 
 ## At infinity
