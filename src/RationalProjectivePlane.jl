@@ -2,8 +2,11 @@ module RationalProjectivePlane
 using LinearAlgebraX, AbstractLattices, Clines
 
 
-export PPoint, PLine
+export PPoint, PLine, ProjectiveObject
 
+"""
+Abstract parent type for `PPoint` and `PLine`.
+"""
 abstract type ProjectiveObject end
 
 """
@@ -81,6 +84,6 @@ include("bools.jl")
 include("meet_join.jl")
 include("cartesian.jl")
 include("transform.jl")
-
+include("drawing.jl")
 
 end # module RationalProjectivePlane
