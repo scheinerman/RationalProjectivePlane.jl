@@ -94,6 +94,9 @@ julia> a ∈ L
 true
 ```
 
+To check if points are collinear, use `collinear` and to check if lines are concurrent (all 
+contain the same point), use `concurrent`.
+
 ## Operations
 
 Given distinct points `a` and `b`, use `a ∨ b` to give the unique line that contains
@@ -232,4 +235,3 @@ ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
 
 * Should I export `ProjectiveObject`?
 * Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
-* Add `collinear` method. What should corresponding method be for lines?
