@@ -51,6 +51,9 @@ end
 
     @test pp ∨ qq == LL
 
+    B = Rational{Int}.(invx(A))
+    @test B*pp == p
+
     L = PLine(2, 1, -1)
     M = PLine(0, 5, 2)
     x = L ∧ M
