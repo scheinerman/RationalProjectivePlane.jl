@@ -230,7 +230,6 @@ ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
 
 ## To Do List
 
-
-* Transformation methods: `Matrix` times `ProjectiveObject`
 * Should I export `ProjectiveObject`?
 * Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
+* Add `collinear` method. What should corresponding method be for lines?
