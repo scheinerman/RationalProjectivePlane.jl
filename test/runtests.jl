@@ -41,16 +41,25 @@ end
 
 @testset "Transform" begin
     A = [6 5 -1; 9 4 9; -4 6 0]
-    AA = Rational{Int}.(invx(A))
-    AA = copy(transpose(AA))
     p = PPoint(3, 0, -5)
     q = PPoint(2, 2, 3)
     L = p ∨ q
 
     pp = A * p
     qq = A * q
-    LL = AA * L
+    LL = A * L
 
     @test pp ∨ qq == LL
+
+    L = PLine(2, 1, -1)
+    M = PLine(0, 5, 2)
+    x = L ∧ M
+
+    LL = A * L
+    MM = A * M
+    xx = A * x
+
+    @test xx ∈ LL
+    @test xx ∈ MM
 
 end

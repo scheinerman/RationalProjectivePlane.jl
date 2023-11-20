@@ -158,13 +158,51 @@ julia> isinf(b)
 true
 ```
 
-## Linear Transformation
+## Transformation
 
-Given an invertible 3x3 matrix `A` (with integer or rational entries) and a point `p`, 
-then `A*p` transforms the point `p` to a new point by applying `A` to `p`'s coordinates.
+Given an invertible 3x3 matrix `M` (with integer or rational entries) and a point `p`, 
+then `M*p` transforms the point `p` to a new point by applying `M` to `p`'s coordinates.
 
+```
+julia> M = [7 -7 -4; 9 -8 0; 6 2 9]
+3×3 Matrix{Int64}:
+ 7  -7  -4
+ 9  -8   0
+ 6   2   9
 
+julia> x = PPoint(5,6,-4)
+(-5 : -6 : 4)
 
+julia> y = PPoint(2,0,-5)
+(-2 : 0 : 5)
+
+julia> xx = M*x
+(3 : -1 : 2)
+
+julia> yy = M*y
+(-34 : -18 : 33)
+```
+
+When a matrix `M` is applied to line `L`, however, the result is as if we applied the 
+transformation to all of the points on `L`. *This is not the same as multiplying `M` 
+with `L`'s coordinates.*
+
+```
+julia> L = x ∨ y
+[30 : -17 : 12]
+
+julia> LL = M*L
+[-3 : 167 : 88]
+
+julia> xx ∈ LL
+true
+
+julia> p = PPoint(L)
+(30 : -17 : 12)
+
+julia> M*p          # note that the answer is not [-3 : 167 : 88]
+(281 : 406 : 254)  
+```
 
 
 ## Cartesian Coordinates
