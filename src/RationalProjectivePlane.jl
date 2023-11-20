@@ -1,5 +1,5 @@
 module RationalProjectivePlane
-using LinearAlgebraX, AbstractLattices
+using LinearAlgebraX, AbstractLattices, Clines
 
 
 export PPoint, PLine

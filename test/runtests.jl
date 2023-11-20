@@ -1,4 +1,4 @@
-using Test, RationalProjectivePlane
+using Test, RationalProjectivePlane, LinearAlgebraX
 
 @testset "Creations" begin
     p = PPoint(1, 1, 1)
@@ -52,7 +52,7 @@ end
     @test pp ∨ qq == LL
 
     B = Rational{Int}.(invx(A))
-    @test B*pp == p
+    @test B * pp == p
 
     L = PLine(2, 1, -1)
     M = PLine(0, 5, 2)
@@ -64,5 +64,17 @@ end
 
     @test xx ∈ LL
     @test xx ∈ MM
+
+end
+
+
+@testset "Collinear and Concurrent" begin
+    x = PPoint(2, 3, 5)
+    y = PPoint(10, 20, 30)
+    z = Vector(x) + Vector(y) |> PPoint
+    @test collinear(x, y, z)
+
+    lines = [PLine(k, 2k, 1) for k = 1:10]
+    @test concurrent(lines)
 
 end

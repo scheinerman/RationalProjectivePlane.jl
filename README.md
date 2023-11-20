@@ -95,7 +95,25 @@ true
 ```
 
 To check if points are collinear, use `collinear` and to check if lines are concurrent (all 
-contain the same point), use `concurrent`.
+contain the same point), use `concurrent`. These can be used either on comma-separated 
+arguments or on a `Vector` of arguments.
+```
+julia> a = PPoint(2,5,10)
+(2 : 5 : 10)
+
+julia> b = PPoint(1,1,1)
+(1 : 1 : 1)
+
+julia> c = PPoint(3,6,11)
+(3 : 6 : 11)
+
+julia> collinear(a,b,c)
+true
+
+julia> a ∨ b == a ∨ c
+true
+```
+
 
 ## Operations
 
@@ -235,3 +253,4 @@ ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
 
 * Should I export `ProjectiveObject`?
 * Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
+* `collinear` conflicts with same function name in `Clines`.

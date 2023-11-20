@@ -28,6 +28,7 @@ isinf(x::PPoint)::Bool = x.data.data[3] == 0
 isinf(L::PLine)::Bool = L.data.data[1] == L.data.data[2] == 0
 
 # collinearity and concurrency
+import Clines: collinear
 export collinear, concurrent
 
 """
