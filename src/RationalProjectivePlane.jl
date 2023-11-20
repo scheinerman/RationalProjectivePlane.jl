@@ -60,13 +60,26 @@ PLine(x::T) where {T<:ProjectiveObject} = PLine(x.data)
 
 # Convert to a `Vector{Rational}`
 
-Vector(x::T) where {T<:ProjectiveObject} = x.data.data
+
+"""
+    Vector(x::ProjectiveObject)::Vector{Int}
+
+For a projective point or line, return an integer vector containing its homogenous
+so that (a) the last nonzero coordinate is positive and (b) the gcd of the coordinates
+is one. 
+"""
+function Vector(x::ProjectiveObject)::Vector{Int}
+    dlist = denominator.(Vector(x.data))
+    d = lcm(dlist...)
+    Int.(d * x.data.data)
+end
+
 
 
 include("io.jl")
 include("bools.jl")
 include("meet_join.jl")
-
+include("cartesian.jl")
 
 
 end # module RationalProjectivePlane

@@ -1,14 +1,9 @@
 import Base: string, show
 
 
-function _integerize(x::ProjectiveObject)::Vector{Int}
-    dlist = denominator.(Vector(x.data))
-    d = lcm(dlist...)
-    Int.(d * x.data.data)
-end
 
 function _string(x::ProjectiveObject)::String
-    x, y, z = _integerize(x)
+    x, y, z = Vector(x)
     return "$x : $y : $z"
 end
 
