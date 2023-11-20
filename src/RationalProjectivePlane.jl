@@ -80,6 +80,7 @@ include("io.jl")
 include("bools.jl")
 include("meet_join.jl")
 include("cartesian.jl")
+include("transform.jl")
 
 
 end # module RationalProjectivePlane

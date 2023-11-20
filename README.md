@@ -158,6 +158,15 @@ julia> isinf(b)
 true
 ```
 
+## Linear Transformation
+
+Given an invertible 3x3 matrix `A` (with integer or rational entries) and a point `p`, 
+then `A*p` transforms the point `p` to a new point by applying `A` to `p`'s coordinates.
+
+
+
+
+
 ## Cartesian Coordinates
 
 If `p` is a point that is not at infinity, then it corresponds to a "normal" 

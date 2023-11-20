@@ -38,3 +38,19 @@ end
     @test x ∈ L
     @test M ∋ x
 end
+
+@testset "Transform" begin
+    A = [6 5 -1; 9 4 9; -4 6 0]
+    AA = Rational{Int}.(invx(A))
+    AA = copy(transpose(AA))
+    p = PPoint(3, 0, -5)
+    q = PPoint(2, 2, 3)
+    L = p ∨ q
+
+    pp = A * p
+    qq = A * q
+    LL = AA * L
+
+    @test pp ∨ qq == LL
+
+end
