@@ -155,7 +155,7 @@ julia> L = PLine(2, 3//5, -1)
 [-10 : -3 : 5]
 
 julia> a,b = two_points(L)
-((-3 : 10 : 0), (1 : 0 : 2))
+((-1 : 5 : 1), (1 : 0 : 2))
 
 julia> a ∨ b
 [-10 : -3 : 5]
@@ -253,4 +253,3 @@ ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
 
 * Should I export `ProjectiveObject`?
 * Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
-* `collinear` conflicts with same function name in `Clines`.

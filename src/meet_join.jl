@@ -45,22 +45,57 @@ function _op2(a::HVector)
     return v, w
 end
 
+
+# for the two_points and two_lines functions we want to give 
+# finite results whenever possible.
+
+
 """
     two_points(L::PLine)::Tuple{PPoint,PPoint}
 
-Given a line `L` return a pair of distinct points on `L`.
+Given a line `L` return a pair of distinct points on `L`. Unless `L`
+is the line at infinity, return a pair of finite points. 
 """
 function two_points(L::PLine)::Tuple{PPoint,PPoint}
     v, w = _op2(L.data)
-    return PPoint(v), PPoint(w)
+    a, b = PPoint(v), PPoint(w)
+
+    if isinf(L)   # if L is the line at infinity, can't avoid infinite points
+        return a, b
+    end
+
+    if isinf(a)
+        c = Vector(a) + Vector(b) |> PPoint
+        return c, b
+    end
+
+    if isinf(b)
+        c = Vector(a) + Vector(b) |> PPoint
+        return a, c
+    end
+
+    return a, b
 end
 
 """
     two_lines(a::PPoint)::Tuple{PLine, PLine}
 
-Given a point `a` return a pair of distinct lines that contain `a`.
+Given a point `a` return a pair of distinct lines that contain `a`. Neither 
+line returned is the line at infinity.
 """
 function two_lines(a::PPoint)::Tuple{PLine,PLine}
     v, w = _op2(a.data)
-    return PLine(v), PLine(w)
+    L, M = PLine(v), PLine(w)
+
+    if isinf(L)
+        L = Vector(L) + Vector(M) |> PLine
+        return L, M
+    end
+
+    if isinf(M)
+        M = Vector(L) + Vector(M) |> PLine
+        return L, M
+    end
+
+    return L, M
 end
