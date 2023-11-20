@@ -39,9 +39,9 @@ function draw(objs::Vector{T}) where {T<:ProjectiveObject}
 
         draw_point(xmin, ymin, marker = 0)
         draw_point(xmax, ymax, marker = 0)
-        p,q = corners()
-        draw_point(p,marker=0)
-        draw_point(q,marker=0)
+        p, q = corners()
+        draw_point(p, marker = 0)
+        draw_point(q, marker = 0)
     end
 
     for p ∈ points
