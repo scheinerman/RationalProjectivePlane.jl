@@ -59,18 +59,18 @@ julia> PLine(a)
 
 ### Conversion to a `Vector`
 
-Given a point or line, `x`, use `Vector(x)` to convert `x` into a vector of rational 
-numbers. The vector version is scaled such that the last nonzero coordinate is `1`.
+Given a point or line, `x`, use `Vector(x)` to convert `x` into a vector of integers. 
+The vector version is scaled such that the last nonzero coordinate is positive and the
+greatest common divisior of the components is `1`.
 ```
-julia> a = PPoint(-3, 3//2, 5)
-(-6 : 3 : 10)
+julia> a = PPoint(-3, 3//2, 5);
 
 julia> Vector(a)
-3-element Vector{Rational{Int64}}:
- -3//5
-  3//10
-  1//1
-  ```
+3-element Vector{Int64}:
+ -6
+  3
+ 10
+```
 
 
 ## Incidence
@@ -95,7 +95,6 @@ true
 ```
 
 ## Operations
-
 
 Given distinct points `a` and `b`, use `a ∨ b` to give the unique line that contains
 both points.
@@ -159,10 +158,32 @@ julia> isinf(b)
 true
 ```
 
+## Cartesian Coordinates
+
+If `p` is a point that is not at infinity, then it corresponds to a "normal" 
+point in the Euclidean plane. The function `cartesian` gives the coordinates of
+that point. That is, `cartesian(p)` returns a vector `[x,y]` with the property
+that `p == PPoint(x,y,1)`.
+
+```
+julia> a = PPoint(5, -2, -15)
+(-5 : 2 : 15)
+
+julia> cartesian(a)
+2-element Vector{Rational{Int64}}:
+ -1//3
+  2//15
+  
+julia> b = PPoint(3,-5,0)
+(-3 : 5 : 0)
+
+julia> cartesian(b)
+ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
+```
+
 ## To Do List
 
-* For a finite point `a`, create a method that returns `(x,y)` such that `(x,y,1)` are the homogenous coordinates of `a`. In this way, `a=PPoint(x,y)`. This `(x,y)` represents the point in the Euclidean plane corresponding to `a` (since it's not at infinity). [This will be easy.]
-* Transformation methods.
-* Should `Vector` be changed to give the integer version that we use to print?
+
+* Transformation methods: `Matrix` times `ProjectiveObject`
 * Should I export `ProjectiveObject`?
 * Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
