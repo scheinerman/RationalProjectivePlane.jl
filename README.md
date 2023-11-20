@@ -249,7 +249,32 @@ julia> cartesian(b)
 ERROR: ArgumentError: The point (-3 : 5 : 0) is at infinity
 ```
 
+A projective line `L` can be converted into a `Line` object (from the `Clines` module)
+simply by using `Line(L)`. However, if `L` is the line at infinity, `nothing` is returned.
+```
+julia> using Clines
+
+julia> L = PLine(12,18,3)
+[4 : 6 : 1]
+
+julia> Line(L)
+Line(-1.0 + 0.5im, -0.25 + 0.0im)
+
+julia> L = PLine(0,0,1)
+[0 : 0 : 1]
+
+julia> isinf(L)
+true
+
+julia> Line(L)   # returns nothing
+
+julia> 
+```
+
+
+
+
 ## To Do List
 
 * Should I export `ProjectiveObject`?
-* Visualization via `SimpleDrawing`. I fear this is going to be difficult. 
+* Visualization via `SimpleDrawing`. 

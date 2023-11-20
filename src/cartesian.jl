@@ -19,7 +19,8 @@ import Clines: Line
 """
     Line(L::PLine)
 
-TBW
+Convert a projective line into a `Line` (from the `Clines`) module.
+If `L` is the line at infinity, return `nothing`.
 """
 function Line(L::PLine)::Union{Nothing, Line}
     if isinf(L)
@@ -29,6 +30,6 @@ function Line(L::PLine)::Union{Nothing, Line}
     a,b = two_points(L)
     ax, ay = cartesian(a)
     bx, by = cartesian(b)
+    
     return Line(ax,ay,bx,by)
-
 end
