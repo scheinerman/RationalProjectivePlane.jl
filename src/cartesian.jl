@@ -13,3 +13,22 @@ function cartesian(p::PPoint)::Vector
     xyz = p.data.data
     return xyz[1:2]
 end
+
+import Clines: Line
+
+"""
+    Line(L::PLine)
+
+TBW
+"""
+function Line(L::PLine)::Union{Nothing, Line}
+    if isinf(L)
+        return nothing
+    end
+
+    a,b = two_points(L)
+    ax, ay = cartesian(a)
+    bx, by = cartesian(b)
+    return Line(ax,ay,bx,by)
+
+end
