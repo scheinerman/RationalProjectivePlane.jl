@@ -38,3 +38,8 @@ function draw(objs::Vector{T}) where {T<:ProjectiveObject}
 
     finish()
 end
+
+function draw(a::T, b...) where T<:ProjectiveObject 
+    obs = [a; collect(b)]
+    draw(obs)
+end
