@@ -273,8 +273,22 @@ julia>
 
 
 
+## Visualization
 
-## To Do List
+Together with `SimpleDrawing` (and `Plots`) projective points and lines can be 
+drawn on the screen. For example:
 
-* Should I export `ProjectiveObject`?
-* Visualization via `SimpleDrawing`. 
+```
+newdraw()
+a = PPoint(0, 0)
+b = PPoint(2, 0)
+c = PPoint(1, 17 // 10)
+draw([a, b, c, a ∨ b, a ∨ c, b ∨ c])
+```
+
+This is the result:
+
+![](triangle.png)
+
+Note that points or lines at infinity are never drawn. Lines are drawn using the 
+`draw` method in `Clines`.
