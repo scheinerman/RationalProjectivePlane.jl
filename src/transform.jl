@@ -24,9 +24,23 @@ function (*)(M::Matrix, a::PPoint)::PPoint
 end
 
 
+
+"""
+    _inv_tr(M::Matrix)
+
+Compute the transpose inverse of a matrix, reducing the precision
+of the matrix to `Rational{Int}`.
+"""
+function _inv_tr(M::Matrix)
+    A = copy(transpose(invx(M)))
+    return Rational{Int}.(A)
+end
+
 function (*)(M::Matrix, L::PLine)::PLine
-    a, b = two_points(L)
-    aa = M * a
-    bb = M * b
-    return aa ∨ bb
+    if detx(M) == 0
+        throw(ArgumentError("Matrix must be nonsingular"))
+    end
+    MM = _inv_tr(M)
+    v = MM * Vector(L)
+    return PLine(v)
 end

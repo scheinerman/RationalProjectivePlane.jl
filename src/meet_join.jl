@@ -25,6 +25,7 @@ function ∨(a::PPoint, b::PPoint)::PLine
     return PLine(v)
 end
 
+PLine(a::PPoint, b::PPoint) = a ∨ b
 
 """
     ∧(a::PLine, b::PLine)::PPoint
@@ -35,6 +36,8 @@ function ∧(a::PLine, b::PLine)::PPoint
     v = _op1(a.data, b.data)
     return PPoint(v)
 end
+
+PPoint(L::PLine, M::PLine) = L ∧ M
 
 
 function _op2(a::HVector)

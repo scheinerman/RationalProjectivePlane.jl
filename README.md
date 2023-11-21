@@ -117,6 +117,8 @@ true
 
 ## Operations
 
+### Meet and join
+
 Given distinct points `a` and `b`, use `a ∨ b` to give the unique line that contains
 both points.
 
@@ -143,6 +145,11 @@ julia> b ∈ L
 true
 ```
 
+In addition, lines can be construced from two points and points from two lines. 
+That is, `PLine(a,b)` is the same as `a ∨ b` and `PPoint(L,M)` is the same as
+`L ∧ M`.
+
+### Finding two points on a line and two lines through a point
 
 Given a single point `a`, `two_lines(a)` returns a pair of distinct lines that both
 contain the point `a`
