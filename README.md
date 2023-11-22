@@ -40,6 +40,9 @@ Points and lines are not the same, but it is possible to convert a point to a li
 homogenous coordinates as `a`. Conversely, for a line `L` use `PPoint(L)` to create a
 point with the same homogenous coordinates as `L`.
 
+The same effect can be accomplished with `dual`. That is `dual` of a `PPoint` gives a 
+`PLine` with the same coordinates, and vice versa.
+
 ```
 julia> a = PPoint(2,3,-1)
 (-2 : -3 : 1)
@@ -54,6 +57,9 @@ julia> a == PPoint(L)
 true
 
 julia> PLine(a)
+[-2 : -3 : 1]
+
+julia> dual(a)
 [-2 : -3 : 1]
 ```
 

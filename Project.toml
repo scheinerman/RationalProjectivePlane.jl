@@ -1,7 +1,7 @@
 name = "RationalProjectivePlane"
 uuid = "c6f45eda-53e9-4846-927e-3bf2d3f4e2f3"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
-version = "0.0.3"
+version = "0.0.4"
 
 [deps]
 AbstractLattices = "398f06c4-4d28-53ec-89ca-5b2656b7603d"

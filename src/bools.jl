@@ -37,27 +37,20 @@ export collinear, concurrent
 
 Test if points (or a list of points) are collinear.
 """
-function collinear(a::PPoint, b::PPoint, c::PPoint)::Bool
-    if a == b || a == c || b == c
-        return true
-    end
-    return a ∈ b ∨ c
-end
-
-
 function collinear(plist::Vector{PPoint})::Bool
-    plist = unique(plist)
     np = length(plist)
     if np < 3
-        return true
+        return true 
     end
-    for k=1:np-2
-        if !collinear(plist[k],plist[k+1],plist[k+2])
-            return false 
-        end
+
+    M = zeros(Int, 3, np)
+    for k=1:np
+        M[:,k] = Vector(plist[k])
     end
-    return true
+
+    return rankx(M) < 3 
 end
+
 
 collinear(a::PPoint, b...)::Bool = collinear([a;collect(b)])
 collinear(a::PPoint)::Bool = true
@@ -70,26 +63,16 @@ collinear()::Bool = true
 
 Test if lines (or a list of lines) are concurrent, i.e., all contain a common point. 
 """
-function concurrent(a::PLine, b::PLine, c::PLine)::Bool
-    if a == b || a == c || b == c
-        return true
-    end
-    return a ∧ b ∈ c
-end
-
-
 function concurrent(llist::Vector{PLine})::Bool
-    llist = unique(llist)
     np = length(llist)
     if np < 3
         return true
     end
-    for k=1:np-2
-        if !concurrent(llist[k],llist[k+1],llist[k+2])
-            return false 
-        end
+    M = zeros(Int, 3, np)
+    for k=1:np
+        M[:,k] = Vector(llist[k])
     end
-    return true
+    return rankx(M) < 3
 end
 
 concurrent(a::PLine, b...)::Bool = concurrent([a;collect(b)])

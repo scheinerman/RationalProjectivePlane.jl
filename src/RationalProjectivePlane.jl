@@ -2,7 +2,7 @@ module RationalProjectivePlane
 using LinearAlgebraX, AbstractLattices, Clines
 
 
-export PPoint, PLine, ProjectiveObject
+export PPoint, PLine, ProjectiveObject, dual
 
 """
 Abstract parent type for `PPoint` and `PLine`.
@@ -78,6 +78,19 @@ function Vector(x::ProjectiveObject)::Vector{Int}
 end
 
 
+"""
+    dual(p::PPoint)::PLine
+    dual(L::PLine)::PPoint
+
+Convert a `PPoint` to `PLine` with the same homogenous coordinates (or vice versa).
+"""
+function dual(p::PPoint)::PLine
+    return PLine(Vector(p))
+end
+
+function dual(L::PLine)::PPoint
+    return PPoint(Vector(L))
+end
 
 include("io.jl")
 include("bools.jl")
