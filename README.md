@@ -13,9 +13,9 @@ A point in the projective plane is created by one of the following methods:
 
 Likewise, lines are created with `PLine`.
 
-Points are printed as triples `(a,b,c)` where `a`, `b`, and `c` are relatively prime integers.
+Points are printed as triples `(a : b : c)` where `a`, `b`, and `c` are relatively prime integers.
 
-Similarly, lines are printed as `[a,b,c]`.
+Similarly, lines are printed as `[a : b: c]`.
 
 ```
 julia> PPoint(2, 3//5, 1)
