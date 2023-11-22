@@ -12,7 +12,6 @@ function grid(n::Int = 3)
     end
 
     plist = [PPoint(i, j, 1) for i = 1:n for j = 1:n]
-
     lines1 = [PPoint(i, 1, 1) ∨ PPoint(i, n, 1) for i = 1:n]
     lines2 = [PPoint(1, i, 1) ∨ PPoint(n, i, 1) for i = 1:n]
 
