@@ -1,12 +1,12 @@
 using RationalProjectivePlane, Clines, Plots, SimpleDrawing
 
 """
-    grid(n::Int = 3)
+    grid(n::Int = 4)
 
 Return a list of points and lines in which the points form an `n`-by-`n`
 grid and the `2n` lines run horizontally and vertically through the grid.
 """
-function grid(n::Int = 3)
+function grid(n::Int = 4)
     if n < 2
         throw(ArgumentError("Argument must be at least 2"))
     end
