@@ -239,6 +239,10 @@ julia> M*p          # note that the answer is not [-3 : 167 : 88]
 (281 : 406 : 254)  
 ```
 
+As an alternative, the syntax `M(ob)` may be used to mean `M*ob` where `M`
+is a matrix and `ob` is a `ProjectiveObject`. This is useful when one
+wishes to transform a list of projective objects like this:
+`M.(ob_list)`.
 
 ## Cartesian Coordinates
 

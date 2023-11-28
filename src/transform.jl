@@ -44,3 +44,8 @@ function (*)(M::Matrix, L::PLine)::PLine
     v = MM * Vector(L)
     return PLine(v)
 end
+
+
+# matrix applied to ProjectiveObject
+
+(M::Matrix)(o::T) where T <: ProjectiveObject = M*o

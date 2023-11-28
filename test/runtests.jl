@@ -65,6 +65,10 @@ end
     @test xx ∈ LL
     @test xx ∈ MM
 
+    @test A*x == A(x)
+    @test A*L == A(L)
+    @test A.([L,x]) == [A*L, A*x]
+
 end
 
 
