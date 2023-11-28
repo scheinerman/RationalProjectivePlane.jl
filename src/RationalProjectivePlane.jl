@@ -61,8 +61,12 @@ PLine(x, y) = PLine(x, y, 1)
 PPoint(x::T) where {T<:ProjectiveObject} = PPoint(x.data)
 PLine(x::T) where {T<:ProjectiveObject} = PLine(x.data)
 
-# Convert to a `Vector{Rational}`
 
+
+PP = PPoint
+PL = PLine
+
+export PP, PL
 
 """
     Vector(x::ProjectiveObject)::Vector{Int}
@@ -91,6 +95,7 @@ end
 function dual(L::PLine)::PPoint
     return PPoint(Vector(L))
 end
+
 
 include("io.jl")
 include("bools.jl")

@@ -13,6 +13,8 @@ A point in the projective plane is created by one of the following methods:
 
 Likewise, lines are created with `PLine`.
 
+Abbreviations: `PP` for `PPoint` and `PL` for `PLine`.
+
 Points are printed as triples `(a : b : c)`.
 Similarly, lines are printed as `[a : b : c]`.
 The triple is scaled such that `a`, `b`, and `c` are relatively prime integers, and the rightmost nonzero
@@ -243,6 +245,18 @@ As an alternative, the syntax `M(ob)` may be used to mean `M*ob` where `M`
 is a matrix and `ob` is a `ProjectiveObject`. This is useful when one
 wishes to transform a list of projective objects like this:
 `M.(ob_list)`.
+
+### Creating transformations
+
+The function `transform` can be used to create matrices to give desireable 
+transformations.
+
+The function `transform(a, aa, b, bb, c, cc)` (where the arguments are of type
+`PPoint`) creates a matrix `M` such that `M(a)==aa`, `M(b)==bb`, and `M(c)==cc`.
+
+The shorter form `transform(a,b,c)` gives a matrix maps `a` to `(1 : 0 : 0)`,
+`b` to `(0 : 1 : 0)`, and `c` to `(0 : 0 : 1)`.
+
 
 ## Cartesian Coordinates
 

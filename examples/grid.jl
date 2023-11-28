@@ -19,7 +19,7 @@ function grid(n::Int = 4)
 end
 
 function skewed_grid(n::Int = 4)
-    M = [0 100 10; 100 -1 10; -10 -10 100]
+    M = [10 11 0; 11 10 0; 9 9 1]
     obs = grid(n)
     new_obs = M.(obs)
     return new_obs
