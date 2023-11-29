@@ -90,7 +90,7 @@ Any of the following may be used to see if a point `a` is on a line `L`:
 * `a ∈ L`
 * `L ∋ a`
 
-> The symbol `∈` can is typed `\in<tab>` and the symbol `∋` is typed `\ni<tab>`.
+> The symbol `∈` is typed `\in<tab>` and the symbol `∋` is typed `\ni<tab>`.
 
 ```
 julia> a = PPoint(2,1,1)
